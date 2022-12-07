@@ -7,13 +7,13 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts '🌱 Seeding plants...'
-
+20.times do 
 Plant.create!(
   name: Faker::Name.name,
   image_url: Faker::Avatar.image,
   price: Faker::Commerce.price
 )
-
+end
 
 20.times do 
   User.create!(
