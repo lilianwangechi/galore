@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_070501) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_102200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,14 +22,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_070501) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "plants_users", id: false, force: :cascade do |t|
+    t.bigint "plant_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["plant_id", "user_id"], name: "index_plants_users_on_plant_id_and_user_id"
+    t.index ["user_id", "plant_id"], name: "index_plants_users_on_user_id_and_plant_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "comment"
     t.integer "rating"
     t.bigint "user_id", null: false
-    t.bigint "plants_id", null: false
+    t.bigint "plant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["plants_id"], name: "index_reviews_on_plants_id"
+    t.index ["plant_id"], name: "index_reviews_on_plant_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -41,6 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_070501) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "reviews", "plants", column: "plants_id"
+  add_foreign_key "reviews", "plants"
   add_foreign_key "reviews", "users"
 end

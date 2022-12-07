@@ -23,4 +23,14 @@ Plant.create!(
   )
   end
 
+  puts 'Seeding Reviews..'
+50.times do 
+  Review.create(
+    comment: Faker::Lorem.sentence,
+    rating: rand(3..5),
+    user_id: rand(1..User.all.size),
+    plant_id: rand(1..Plant.all.size),
+  )
+end
+
 puts '✅ Done seeding!'
