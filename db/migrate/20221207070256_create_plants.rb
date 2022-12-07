@@ -5,6 +5,8 @@ class CreatePlants < ActiveRecord::Migration[7.0]
       t.string :image_url
       t.float :price
 
+      
+
       t.timestamps
     end
   end
