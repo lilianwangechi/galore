@@ -1,13 +1,21 @@
-import Header from "./Header";
-import PlantPage from "./PlantPage";
+// import Header from "./Header";
+// import PlantPage from "./PlantPage";
+// import { Router, Route } from "react-router-dom";
+import NavBar from "./NavBar";
+
 
 function App() {
  
   return (
 
     <div className="app">
-      <Header />
-      <PlantPage />
+      <NavBar />
+     {/* <Router>
+      <Route exact path="/" element={<PlantPage />} />
+       
+    
+     </Router> */}
+  
     </div>
   );
 }

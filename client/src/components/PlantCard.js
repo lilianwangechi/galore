@@ -18,6 +18,7 @@ function PlantCard({ plant }) {
         <button className="primary" onClick={handleToggleStock}>
           In Stock
         </button>
+        
       ) : (
         <button onClick={handleToggleStock}>Out of Stock</button>
       )}
